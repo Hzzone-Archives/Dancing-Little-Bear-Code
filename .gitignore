@@ -1,0 +1,6 @@
+*.idea/
+*.pyc
+*.cntkmodel
+Human-Pose-Estimation/sample/1.jpg
+Human-Pose-Estimation/sample/2.jpg
+Human-Pose-Estimation/.idea/vcs.xml

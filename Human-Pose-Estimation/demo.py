@@ -50,7 +50,7 @@ thre1 = 0.1
 thre2 = 0.05
 
 # test_image = '../sample/ski.jpg'
-test_image = os.path.join(base_dir, 'sample', 'ski.jpg')
+test_image = os.path.join(base_dir, 'sample', '1.jpg')
 oriImg = cv.imread(test_image)  # B,G,R order
 print("oriImg shape: ", oriImg.shape)
 multiplier = [x * boxsize / oriImg.shape[0] for x in scale_search]
@@ -236,11 +236,13 @@ for k in range(len(mapIdx)):
                 row[-2] = sum(candidate[connection_all[k][i, :2].astype(int), 2]) + connection_all[k][i][2]
                 subset = np.vstack([subset, row])
 # delete some rows of subset which has few parts occur
-deleteIdx = [];
+deleteIdx = []
 for i in range(len(subset)):
     if subset[i][-1] < 4 or subset[i][-2] / subset[i][-1] < 0.4:
         deleteIdx.append(i)
 subset = np.delete(subset, deleteIdx, axis=0)
+print("shape of subset:", subset.shape)
+print("subset:", subset)
 
 # print subset
 stickwidth = 4
@@ -264,6 +266,7 @@ to_plot = cv.addWeighted(oriImg, 0.3, canvas, 0.7, 0)
 for i in range(17):
     for n in range(len(subset)):
         index = subset[n][np.array(limbSeq[i]) - 1]
+        print("index:", index)
         if -1 in index:
             continue
         cur_canvas = canvas.copy()
@@ -274,9 +277,10 @@ for i in range(17):
         length = ((X[0] - X[1]) ** 2 + (Y[0] - Y[1]) ** 2) ** 0.5
         angle = math.degrees(math.atan2(X[0] - X[1], Y[0] - Y[1]))
         polygon = cv.ellipse2Poly((int(mY), int(mX)), (int(length / 2), stickwidth), int(angle), 0, 360, 1)
+        print("X, Y:", (int(mY), int(mX)))
         cv.fillConvexPoly(cur_canvas, polygon, colors[i])
         canvas = cv.addWeighted(canvas, 0.4, cur_canvas, 0.6, 0)
 
 # plt.imsave("../sample/preview.jpg", canvas[:, :, [2, 1, 0]])
-plt.imsave(os.path.join(base_dir, "sample", "preview.jpg"), canvas[:, :, [2, 1, 0]])
+plt.imsave(os.path.join(base_dir, "sample", "2.jpg"), canvas[:, :, [2, 1, 0]])
 
