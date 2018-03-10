@@ -27,6 +27,8 @@ from download_model import download_model
 import base64
 import datetime
 import json
+from itertools import chain
+
 
 # Global Value
 
@@ -310,8 +312,13 @@ def run(input_df):
     print("Image predicted to be 'all_peaks: {}, subset: {}, candidate: {}'.".format(all_peaks, subset, candidate))
 
     # Create json-encoded string of the model output
+
     executionTimeMs = (datetime.datetime.now() - startTime).microseconds / 1000
-    outDict = {"all_peaks": str(all_peaks), "subset": str(subset), "candidate": str(candidate),
+    # outDict = {"all_peaks": list(chain.from_iterable(all_peaks)) , "subset": list(chain.from_iterable(subset)), "candidate": list(chain.from_iterable(candidate)),
+    #            "executionTimeMs": str(executionTimeMs)}
+    # outDict = {"all_peaks": np.matrix(all_peaks).tolist() , "subset": np.matrix(subset).tolist(), "candidate": np.matrix(candidate).tolist(),
+    #            "executionTimeMs": str(executionTimeMs)}
+    outDict = {"all_peaks": np.array(all_peaks).tolist() , "subset": np.array(subset).tolist(), "candidate": np.array(candidate).tolist(),
                "executionTimeMs": str(executionTimeMs)}
     outJsonString = json.dumps(outDict)
     print("Json-encoded detections: " + outJsonString[:120] + "...")
