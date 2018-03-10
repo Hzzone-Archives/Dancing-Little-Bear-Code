@@ -1,3 +1,0 @@
-azureml-requirements
-azure-ml-api-sdk==0.1.0a10
-azureml.datacollector==0.1.0a13

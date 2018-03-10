@@ -14,8 +14,7 @@ Explore past runs and access project outputs using the **Run History** tab.
 
 ## Dependencies
 ```shell
-pip install -r azureml-requirements.txt -i https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.tuna.tsinghua.edu.cn/simple
-pip install -r requirements.txt
+pip install -r requirements.txt -i https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```	
 
 Runing `python test_dependency.py` to test all the dependencies has been installed correctly!
