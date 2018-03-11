@@ -27,7 +27,7 @@ from download_model import download_model
 import base64
 import datetime
 import json
-from itertools import chain
+import re
 
 
 # Global Value
@@ -115,9 +115,10 @@ def run(input_df):
     print(str(input_df))
 
     # convert input back to image and save to disk
-    base64ImgString = json.loads(str(input_df))['image base64 string']
-    print(base64ImgString)
-    oriImg = base64ToCVImg(base64ImgString)
+    print(input_df)
+    # base64ImgString = json.loads(input_df)
+    # print(base64ImgString)
+    oriImg = base64ToCVImg(re.sub('^data:image/.+;base64,', '',str(input_df)))
 
 
     print("oriImg shape: ", oriImg.shape)

@@ -5,3 +5,5 @@ matplotlib
 opencv-python
 tqdm
 ../cntk-2.3.1-cp35-cp35m-linux_x86_64.whl
+azure.storage
+azure.common
