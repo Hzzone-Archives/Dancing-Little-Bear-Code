@@ -83,7 +83,7 @@ az ml service update realtime --id imapp3.hzzoneml-e2250305.eastus2
 ```
 
 
-###删除服务
+### 删除服务
 ```shell
 az ml service delete realtime -i imapp3.hzzoneml-e2250305.eastus2
 ```

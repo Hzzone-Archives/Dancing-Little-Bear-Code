@@ -21,3 +21,7 @@ Runing `python test_dependency.py` to test all the dependencies has been install
 
 ## Model Download
 [Download Link](http://test-1252747889.cosgz.myqcloud.com/pose_net.zip), and copy it to model/, or run `python download_model.py`
+
+
+## Demo
+[Calling Web Service](https://hzzone.github.io/Dancing-Little-Bear-Code/Human-Pose-Estimation/demo/demo.html)
